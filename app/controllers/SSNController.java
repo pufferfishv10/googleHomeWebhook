@@ -34,7 +34,7 @@ public class SSNController extends Controller {
     public Result save(){
         JsonNode data = request().body().asJson();
 
-            return ok("Data: "+data + "\n");
+            return ok(data);
 
     }
 
