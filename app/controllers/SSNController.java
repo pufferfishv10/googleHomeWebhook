@@ -40,9 +40,35 @@ public class SSNController extends Controller {
         JsonNode params = data.get("parameters");
         String cookingSpeed =  params.get("cooking-speed").asText();
         String  protein = params.get("protein").asText();
-        String res = RestClient.getRecipe(protein + "," + cookingSpeed);
+        String res = RestClient.getRecipe(protein);
 
-            return ok(createResponse(res));
+
+
+
+
+        ///////////////
+        ObjectMapper mapper = new ObjectMapper();
+        JsonNode actualObj = mapper.readTree(res);
+
+        int count = actualObj.get("count").asInt();
+
+        JsonNode hits = actualObj.get("hits");
+        JsonNode zero = hits.path(0);
+        JsonNode recipe = zero.get("recipe");
+
+        String chef = recipe.get("source").asText();
+        String label = recipe.get("label").asText();
+
+
+        Fulfillment f = new Fulfillment();
+        f.setDisplaytext(label);
+        f.setSource(chef);
+        f.setSpeech("I found the " + label);
+
+        String json = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(f);
+        /////////////////
+
+            return ok(json);
 
     }
 
@@ -54,7 +80,7 @@ public class SSNController extends Controller {
         int count = actualObj.get("count").asInt();
 
         JsonNode hits = actualObj.get("hits");
-        JsonNode recipe = actualObj.get("recipe");
+        JsonNode recipe = hits.get("recipe");
         String chef = recipe.get("source").asText();
         String label = recipe.get("label").asText();
 
