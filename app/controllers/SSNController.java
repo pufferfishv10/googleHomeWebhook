@@ -35,14 +35,14 @@ public class SSNController extends Controller {
 //        return ok(Integer.toString(counter.nextCount()));
 //    }
 
-    public Result save(){
+    public Result save() throws IOException {
         JsonNode data = request().body().asJson();
         JsonNode params = data.get("parameters");
         String cookingSpeed =  params.get("cooking-speed").asText();
         String  protein = params.get("protein").asText();
         String res = RestClient.getRecipe(protein + "," + cookingSpeed);
 
-            return ok(res);
+            return ok(createResponse(res));
 
     }
 
