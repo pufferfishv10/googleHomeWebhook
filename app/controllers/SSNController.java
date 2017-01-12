@@ -72,16 +72,17 @@ public class SSNController extends Controller {
         JsonNode messagesNode = fulfillment.get("messages");
 
         Message message = new Message();
+        message.setType(0);
         message.setDisplayText("Today in Boston: Fair, the temperature is 37 F");
         message.setSource("apiai-weather-webhook-sample");
         message.setSpeech("Today in Boston: Fair, the temperature is 37 F");
 
 
-        /*ObjectMapper mapper = new ObjectMapper();
+        ObjectMapper mapper = new ObjectMapper();
         Messages msgs = new Messages();
         msgs.setMessage(message);
         ObjectNode objectNode = mapper.valueToTree(msgs);
-        ((ObjectNode) fulfillment).setAll(objectNode);*/
+        ((ObjectNode) fulfillment).setAll(objectNode);
 
         ((ObjectNode) fulfillment).put("speech", "Today in Boston: Fair, the temperature is 37 F");
         ((ObjectNode) fulfillment).put("source", "Today in Boston: Fair, the temperature is 37 F");
