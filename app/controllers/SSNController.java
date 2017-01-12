@@ -106,7 +106,7 @@ public class SSNController extends Controller {
 
         response().setHeader("Content-Type", "application/json");
 
-            return ok(data);
+            return ok(data.toString());
 
     }
 
