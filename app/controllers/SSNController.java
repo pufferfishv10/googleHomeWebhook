@@ -77,8 +77,8 @@ public class SSNController extends Controller {
 
         Message message = new Message();
         message.setType(0);
-        message.setDisplayText("Today in Boston: Fair, the temperature is 37 F");
-        message.setSource("apiai-weather-webhook-sample");
+//        message.setDisplayText("Today in Boston: Fair, the temperature is 37 F");
+//        message.setSource("apiai-weather-webhook-sample");
         message.setSpeech("Today in Boston: Fair, the temperature is 37 F");
 
 
