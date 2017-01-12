@@ -2,8 +2,11 @@ package controllers;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import model.Fulfillment;
+import model.Message;
+import model.Messages;
 import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Result;
@@ -66,8 +69,21 @@ public class SSNController extends Controller {
         String label = recipe.get("label").asText();*/
 
         JsonNode fulfillment = result.get("fulfillment");
+        JsonNode messagesNode = fulfillment.get("messages");
 
-        ((ObjectNode) fulfillment).put("speech", "Today in Boston: Fair, the temperature is 37 F");
+        Message message = new Message();
+        message.setDisplayText("Today in Boston: Fair, the temperature is 37 F");
+        message.setSource("apiai-weather-webhook-sample");
+        message.setSpeech("Today in Boston: Fair, the temperature is 37 F");
+
+
+        ObjectMapper mapper = new ObjectMapper();
+        Messages msgs = new Messages();
+        msgs.setMessage(message);
+        ObjectNode objectNode = mapper.valueToTree(msgs);
+        ((ObjectNode) fulfillment).setAll(objectNode);
+
+        //((ObjectNode) fulfillment).put("speech", "Today in Boston: Fair, the temperature is 37 F");
 
         /*"speech": "Today in Boston: Fair, the temperature is 37 F",
                 "source": "apiai-weather-webhook-sample",
