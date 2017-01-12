@@ -69,16 +69,15 @@ public class SSNController extends Controller {
         String label = recipe.get("label").asText();*/
 
         JsonNode fulfillment = result.get("fulfillment");
-        JsonNode messagesNode = fulfillment.get("messages");
 
         ((ObjectNode) fulfillment).put("speech", "Today in Boston: Fair, the temperature is 37 F");
         ((ObjectNode) fulfillment).put("source", "yahoo test api");
         ((ObjectNode) fulfillment).put("displayText", "Today in Boston: Fair, the temperature is 37 F");
 
         Message message = new Message();
-        message.setType(0);
-//        message.setDisplayText("Today in Boston: Fair, the temperature is 37 F");
-//        message.setSource("apiai-weather-webhook-sample");
+      //  message.setType(0);
+        message.setDisplayText("Today in Boston: Fair, the temperature is 37 F");
+        message.setSource("apiai-weather-webhook-sample");
         message.setSpeech("Today in Boston: Fair, the temperature is 37 F");
 
 
@@ -104,9 +103,11 @@ public class SSNController extends Controller {
         String json = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(f);*/
         /////////////////
 
+        String json = mapper.writeValueAsString(message);
+
         response().setHeader("Content-Type", "application/json");
 
-            return ok(data.toString());
+            return ok(json);
 
     }
 

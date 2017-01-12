@@ -5,19 +5,19 @@ package model;
  */
 public class Message
 {
-    private int type;
+   /* private int type;
 
     public int getType() { return this.type; }
 
     public void setType(int type) { this.type = type; }
-
+*/
     private String speech;
 
     public String getSpeech() { return this.speech; }
 
     public void setSpeech(String speech) { this.speech = speech; }
 
-    /*private String source;
+    private String source;
 
     public String getSource() { return this.source; }
 
@@ -27,5 +27,5 @@ public class Message
 
     public String getDisplayText() { return this.displayText; }
 
-    public void setDisplayText(String displayText) { this.displayText = displayText; }*/
+    public void setDisplayText(String displayText) { this.displayText = displayText; }
 }
