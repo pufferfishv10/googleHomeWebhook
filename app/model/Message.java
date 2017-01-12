@@ -17,7 +17,7 @@ public class Message
 
     public void setSpeech(String speech) { this.speech = speech; }
 
-    private String source;
+    /*private String source;
 
     public String getSource() { return this.source; }
 
@@ -27,5 +27,5 @@ public class Message
 
     public String getDisplayText() { return this.displayText; }
 
-    public void setDisplayText(String displayText) { this.displayText = displayText; }
+    public void setDisplayText(String displayText) { this.displayText = displayText; }*/
 }

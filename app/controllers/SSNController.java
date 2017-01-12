@@ -72,7 +72,7 @@ public class SSNController extends Controller {
         JsonNode messagesNode = fulfillment.get("messages");
 
         ((ObjectNode) fulfillment).put("speech", "Today in Boston: Fair, the temperature is 37 F");
-        ((ObjectNode) fulfillment).put("source", "Today in Boston: Fair, the temperature is 37 F");
+        ((ObjectNode) fulfillment).put("source", "yahoo test api");
         ((ObjectNode) fulfillment).put("displayText", "Today in Boston: Fair, the temperature is 37 F");
 
         Message message = new Message();
