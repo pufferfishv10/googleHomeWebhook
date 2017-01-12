@@ -104,6 +104,8 @@ public class SSNController extends Controller {
         String json = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(f);*/
         /////////////////
 
+        response().setHeader("Content-Type", "application/json");
+
             return ok(data);
 
     }
