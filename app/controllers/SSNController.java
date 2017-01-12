@@ -71,6 +71,10 @@ public class SSNController extends Controller {
         JsonNode fulfillment = result.get("fulfillment");
         JsonNode messagesNode = fulfillment.get("messages");
 
+        ((ObjectNode) fulfillment).put("speech", "Today in Boston: Fair, the temperature is 37 F");
+        ((ObjectNode) fulfillment).put("source", "Today in Boston: Fair, the temperature is 37 F");
+        ((ObjectNode) fulfillment).put("displayText", "Today in Boston: Fair, the temperature is 37 F");
+
         Message message = new Message();
         message.setType(0);
         message.setDisplayText("Today in Boston: Fair, the temperature is 37 F");
@@ -84,9 +88,7 @@ public class SSNController extends Controller {
         ObjectNode objectNode = mapper.valueToTree(msgs);
         ((ObjectNode) fulfillment).setAll(objectNode);
 
-        ((ObjectNode) fulfillment).put("speech", "Today in Boston: Fair, the temperature is 37 F");
-        ((ObjectNode) fulfillment).put("source", "Today in Boston: Fair, the temperature is 37 F");
-        ((ObjectNode) fulfillment).put("displayText", "Today in Boston: Fair, the temperature is 37 F");
+
 
 
         /*"speech": "Today in Boston: Fair, the temperature is 37 F",
